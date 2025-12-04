@@ -1,0 +1,4 @@
+__pycache__/   # ignore Python cache folders
+venv/          # ignore virtual environment
+.env           # ignore environment variables
+*.log          # ignore all log files
