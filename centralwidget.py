@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
     QListWidget,
+    QMessageBox,
 )
 from PySide6.QtCore import Qt
 
@@ -54,5 +55,12 @@ class to_do_app_centralwidget(QWidget):
         self.input_task.clear()
 
     def delete_task(self, item):
-        row = self.list.row(item)
-        self.list.takeItem(row)
+        reply = QMessageBox.question(
+            self,
+            "Delete Task",
+            f"Delete '{item.text()}'?",
+            QMessageBox.Yes | QMessageBox.No,
+        )
+
+        if reply == QMessageBox.Yes:
+            self.list.takeItem(self.list.row(item))
