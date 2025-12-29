@@ -1,5 +1,6 @@
 [
-  "workout",
-  "study",
-  "film"
+  {
+    "text": "Workout",
+    "completed": false
+  }
 ]

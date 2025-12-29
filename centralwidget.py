@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (
     QWidget,
     QListWidget,
     QMessageBox,
+    QListWidgetItem,
 )
 from PySide6.QtCore import Qt
 import json
@@ -47,6 +48,7 @@ class to_do_app_centralwidget(QWidget):
         self.input_task.returnPressed.connect(self.add_task)
         self.list.itemDoubleClicked.connect(self.delete_task)
         self.load_tasks()
+        self.list.itemChanged.connect(self.on_item_changed)
 
     def add_task(self):
         task = self.input_task.text().strip()
@@ -54,8 +56,17 @@ class to_do_app_centralwidget(QWidget):
         if not task:
             return
 
-        self.list.addItem(task)
+        item = QListWidgetItem(task)
+        item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+        item.setCheckState(Qt.Unchecked)
+
+        self.list.addItem(item)
         self.input_task.clear()
+        self.save_tasks()
+
+    def on_item_changed(self, item):
+
+        self.update_item_style(item)
         self.save_tasks()
 
     def delete_task(self, item):
@@ -76,7 +87,16 @@ class to_do_app_centralwidget(QWidget):
         return os.path.join(os.path.dirname(__file__), "tasks.json")
 
     def save_tasks(self):
-        tasks = [self.list.item(i).text() for i in range(self.list.count())]
+        tasks = []
+
+        for i in range(self.list.count()):
+            item = self.list.item(i)
+            tasks.append(
+                {
+                    "text": item.text(),
+                    "completed": item.checkState() == Qt.Checked,
+                }
+            )
 
         with open(self.get_tasks_path(), "w") as f:
             json.dump(tasks, f, indent=2)
@@ -93,4 +113,24 @@ class to_do_app_centralwidget(QWidget):
             return
 
         for task in tasks:
-            self.list.addItem(task)
+            item = QListWidgetItem(task["text"])
+            item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+
+            if task.get("completed"):
+                item.setCheckState(Qt.Checked)
+            else:
+                item.setCheckState(Qt.Unchecked)
+            self.update_item_style(item)
+            self.list.addItem(item)
+
+    def update_item_style(self, item):
+        if item.checkState() == Qt.Checked:
+            item.setForeground(Qt.gray)
+            font = item.font()
+            font.setStrikeOut(True)
+            item.setFont(font)
+        else:
+            item.setForeground(Qt.white)
+            font = item.font()
+            font.setStrikeOut(False)
+            item.setFont(font)
