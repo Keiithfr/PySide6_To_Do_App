@@ -31,7 +31,9 @@ class to_do_app_centralwidget(QWidget):
         self.add_task_button.setObjectName("add_task_button")
         self.list.setObjectName("list")
 
-        self.add_task_button.setCursor(Qt.PointingHandCursor)
+        self.add_task_button.setCursor(
+            Qt.PointingHandCursor
+        )  # cursor pointer on the button
 
         with open("style.qss", "r") as f:
             self.setStyleSheet(f.read())
@@ -64,24 +66,24 @@ class to_do_app_centralwidget(QWidget):
         self.input_task.clear()
         self.save_tasks()
 
+    def update_item_style(self, item):
+        if item.checkState() == Qt.Checked:
+            item.setForeground(Qt.gray)
+            font = item.font()
+            font.setStrikeOut(True)
+            item.setFont(font)
+        else:
+            item.setForeground(Qt.white)
+            font = item.font()
+            font.setStrikeOut(False)
+            item.setFont(font)
+
     def on_item_changed(self, item):
 
         self.update_item_style(item)
         self.save_tasks()
 
-    def delete_task(self, item):
-        reply = QMessageBox.question(
-            self,
-            "Delete Task",
-            f"Delete '{item.text()}'?",
-            QMessageBox.Yes | QMessageBox.No,
-        )
-
-        if reply == QMessageBox.Yes:
-            self.list.takeItem(self.list.row(item))
-            self.save_tasks()
-
-            # Persistence(saving)
+        # Persistence(saving)
 
     def get_tasks_path(self):
         return os.path.join(os.path.dirname(__file__), "tasks.json")
@@ -100,6 +102,18 @@ class to_do_app_centralwidget(QWidget):
 
         with open(self.get_tasks_path(), "w") as f:
             json.dump(tasks, f, indent=2)
+
+    def delete_task(self, item):
+        reply = QMessageBox.question(
+            self,
+            "Delete Task",
+            f"Delete '{item.text()}'?",
+            QMessageBox.Yes | QMessageBox.No,
+        )
+
+        if reply == QMessageBox.Yes:
+            self.list.takeItem(self.list.row(item))
+            self.save_tasks()
 
     def load_tasks(self):
         path = self.get_tasks_path()
@@ -122,15 +136,3 @@ class to_do_app_centralwidget(QWidget):
                 item.setCheckState(Qt.Unchecked)
             self.update_item_style(item)
             self.list.addItem(item)
-
-    def update_item_style(self, item):
-        if item.checkState() == Qt.Checked:
-            item.setForeground(Qt.gray)
-            font = item.font()
-            font.setStrikeOut(True)
-            item.setFont(font)
-        else:
-            item.setForeground(Qt.white)
-            font = item.font()
-            font.setStrikeOut(False)
-            item.setFont(font)
