@@ -6,21 +6,21 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 ---
 
 ## Table of Contents
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Contributing](#contributing)
-- [License](#license)
+- [Features](#Features)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Technologies](#Technologies-Used)
+- [Contributing](#Contributing)
+- [License](#License)
 
 ---
 
 ## Features
--Add new tasks with a simple input field.
--Mark tasks as completed with checkboxes.
--Delete tasks via double-click with a confirmation dialog.
--Tasks are stored automatically in a JSON file for persistence.
--Clean, minimal UI with dynamic styling.
+- Add new tasks with a simple input field.
+- Mark tasks as completed with checkboxes.
+- Delete tasks via double-click with a confirmation dialog.
+- Tasks are stored automatically in a JSON file for persistence.
+- Clean, minimal UI with dynamic styling.
 
 ---
 
