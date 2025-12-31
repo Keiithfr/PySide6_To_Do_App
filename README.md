@@ -6,16 +6,16 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 ---
 
 ## Table of Contents
-- [Features](#Features)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [Technologies](#Technologies)
-- [Contributing](#Contributing)
-- [License](#License)
+- [Features](##features)
+- [Installation](##Installation)
+- [Usage](##Usage)
+- [Technologies](##technologies)
+- [Contributing](##contributing)
+- [License](##license)
 
 ---
 
-# Features
+## Features
 -Add new tasks with a simple input field.
 -Mark tasks as completed with checkboxes.
 -Delete tasks via double-click with a confirmation dialog.
@@ -24,20 +24,23 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 
 ---
 
-# Installation
+## Installation
 
-## Requirements
+### Requirements
 - Python 3.10+
 - PySide6
 
-## Setup
+### Setup
 1. Create a virtual environment (optional but recommended)
 
-  Python -m venv venv
+```bash
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
 
-  venv\Scripts\activate (activate the virtual environment)
-
-  source venv/bin/activate (activate the virtual environment on Mac/Linux)
+```
 
 2. Install dependencies
 
@@ -49,7 +52,7 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 
 ---
 
-# Usage
+## Usage
 
 1. Launch the application.
 2. Enter a task in the input field at the top of the window.
@@ -64,7 +67,7 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 
 ---
 
-# Technologies Used
+## Technologies Used
 - **Python 3** - Core programming language
 - **PySide6 (Qt for Python)** - Desktop  GUI framework
 - **Qt Widgets** - User interface components
@@ -73,7 +76,7 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 
 ---
 
-# Contributing
+## Contributing
 
 Contributions are welcome.
 
@@ -89,7 +92,7 @@ This project is primarily a learning project, so clarity and simplicity are appr
 
 ---
 
-# License
+## License
 
 This project is licensed under the MIT License.
 
