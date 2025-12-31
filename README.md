@@ -6,12 +6,12 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 ---
 
 ## Table of Contents
-- [Features](##features)
-- [Installation](##Installation)
-- [Usage](##Usage)
-- [Technologies](##technologies)
-- [Contributing](##contributing)
-- [License](##license)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
