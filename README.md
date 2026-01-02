@@ -3,13 +3,16 @@
 A simple and interactive To-Do application built with Python and PySide6.
 Easily add, mark as completed, and delete tasks, with persistent storage using JSON.
 
+
+![To-Do App Screenshot](screenshots/app.png)
+
+
 ---
 
 ## Table of Contents
 - [Features](#Features)
 - [Installation](#Installation)
 - [Usage](#Usage)
-- [To-Do App Screenshot](screenshots\app.png)
 - [Technologies](#Technologies-Used)
 - [Contributing](#Contributing)
 - [License](#License)
@@ -32,7 +35,7 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 - PySide6
 
 ### Setup
-1. Create a virtual environment (optional but recommended)
+1. Create a virtual environment
 
 ```bash
 python -m venv venv
