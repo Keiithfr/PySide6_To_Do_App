@@ -9,6 +9,7 @@ Easily add, mark as completed, and delete tasks, with persistent storage using J
 - [Features](#Features)
 - [Installation](#Installation)
 - [Usage](#Usage)
+- [To-Do App Screenshot](screenshots\app.png)
 - [Technologies](#Technologies-Used)
 - [Contributing](#Contributing)
 - [License](#License)
